@@ -116,6 +116,7 @@
     <Compile Include="Assets\Imports\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Imports\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
     <Compile Include="Assets\Scripts\CameraRig\CameraRig.cs" />
+    <Compile Include="Assets\Scripts\GameManagment\GameController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\UserInput.cs" />
     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />

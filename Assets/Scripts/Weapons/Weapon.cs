@@ -125,40 +125,8 @@ public class Weapon : MonoBehaviour {
         }
 	}
 
-    void Fire(Ray ray)
+    void GunEffects()
     {
-        if(ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn)
-        {
-            return;
-        }
-
-        RaycastHit hit;
-        Transform bSpawn = weaponSettings.bulletSpawn;
-        Vector3 bSpawnPoint = bSpawn.position;
-        Vector3 dir = ray.GetPoint(weaponSettings.range);
-
-        dir += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
-
-        if(Physics.Raycast(bSpawnPoint, dir, out hit, weaponSettings.range, weaponSettings.bulletLayers))
-        {
-            #region decal
-            if (hit.collider.gameObject.isStatic)
-            {
-                if (weaponSettings.decal)
-                {
-                    Vector3 hitPoint = hit.point;
-                    Quaternion lookRotation = Quaternion.LookRotation(hit.normal);
-                    GameObject decal = Instantiate(weaponSettings.decal, hitPoint, lookRotation) as GameObject;
-                    Transform decalT = decal.transform;
-                    Transform hitT = hit.transform;
-
-                    decalT.SetParent(hitT);
-                    Destroy(decal, Random.Range(30.0f, 45.0f));
-                }
-            }
-            #endregion
-        }
-
         #region muzzleFlash
         if (weaponSettings.muzzleFlash)
         {
@@ -196,6 +164,53 @@ public class Weapon : MonoBehaviour {
         source.clip = audioClips[0];
         source.Play();
         #endregion
+    }
+
+    void HitEffects(RaycastHit hit)
+    {
+        #region decal
+        if (hit.collider.gameObject.isStatic)
+        {
+            if (weaponSettings.decal)
+            {
+                Vector3 hitPoint = hit.point;
+                Quaternion lookRotation = Quaternion.LookRotation(hit.normal);
+                GameObject decal = Instantiate(weaponSettings.decal, hitPoint, lookRotation) as GameObject;
+                Transform decalT = decal.transform;
+                Transform hitT = hit.transform;
+
+                decalT.SetParent(hitT);
+                Destroy(decal, Random.Range(30.0f, 45.0f));
+            }
+        }
+        #endregion
+
+        if(hit.collider.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Atingiu um inimigo");
+        }
+    }
+
+    void Fire(Ray ray)
+    {
+        if(ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn)
+        {
+            return;
+        }
+
+        RaycastHit hit;
+        Transform bSpawn = weaponSettings.bulletSpawn;
+        Vector3 bSpawnPoint = bSpawn.position;
+        Vector3 dir = ray.GetPoint(weaponSettings.range);
+
+        dir += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
+
+        if(Physics.Raycast(bSpawnPoint, dir, out hit, weaponSettings.range, weaponSettings.bulletLayers))
+        {
+            HitEffects(hit);
+        }
+
+        GunEffects();
 
         if (weaponSettings.useAnimations)
         {

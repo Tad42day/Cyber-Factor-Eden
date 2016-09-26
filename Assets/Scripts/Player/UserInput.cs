@@ -4,8 +4,8 @@ using System;
 
 public class UserInput : MonoBehaviour {
 
-    private PlayerMovement playerMovement;
-    private WeaponHandler weaponHandler;
+    public PlayerMovement playerMovement { get; set; }
+    public WeaponHandler weaponHandler { get; set; }
 
     [System.Serializable]
     public class InputSettings
