@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: houses
+  m_Shader: {fileID: 4800000, guid: 7a0a99f6b0b888f4e955b3d0cc373171, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _BumpMap
+      second:
+        m_Texture: {fileID: 2800000, guid: 457345265c50c4242a74d0d3b8e805b2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: -1}
+    - first:
+        name: _Cube
+      second:
+        m_Texture: {fileID: 8900000, guid: 32d415df423ace74a81ddd43a4f8f395, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Diffuse
+      second:
+        m_Texture: {fileID: 2800000, guid: a0d8325f1f05ad149ac6e2cb87e7c67a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Emission
+      second:
+        m_Texture: {fileID: 2800000, guid: 3e153b710cae794488b98687483ec392, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Illum
+      second:
+        m_Texture: {fileID: 2800000, guid: 6d36caa9e77696a41a6734c8d5297f5f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 2800000, guid: 15418bfe9e3d49147b1df6ae938c6552, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: -1}
+    - first:
+        name: _Normals
+      second:
+        m_Texture: {fileID: 2800000, guid: f5bb36f78f80c164b8ea06565aca4aa1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Reflection
+      second:
+        m_Texture: {fileID: 2800000, guid: 2342b5e4bbaf9ca449bb0f67f50fe3c2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _emission
+      second:
+        m_Texture: {fileID: 2800000, guid: 3e153b710cae794488b98687483ec392, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _reflection
+      second:
+        m_Texture: {fileID: 2800000, guid: 2342b5e4bbaf9ca449bb0f67f50fe3c2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - first:
+        name: _EmissionLM
+      second: 40
+    - first:
+        name: _Gloss
+      second: 0.5
+    - first:
+        name: _Shininess
+      second: 0.4215067
+    - first:
+        name: _gloss
+      second: 0.576923
+    - first:
+        name: _reflection_warp
+      second: 0.004
+    m_Colors:
+    - first:
+        name: _Color
+      second: {r: 0.6641791, g: 0.6641791, b: 0.6641791, a: 1}
+    - first:
+        name: _DiffuseColor
+      second: {r: 0.57462686, g: 0.57462686, b: 0.57462686, a: 1}
+    - first:
+        name: _ReflectColor
+      second: {r: 0.18478502, g: 0.47066963, b: 0.5895523, a: 0.5019608}
+    - first:
+        name: _Reflectioncolor
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _specular_reflection_color
+      second: {r: 0.6616173, g: 0.7581235, b: 0.89552236, a: 1}

@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000011422115520}
+  m_IsPrefabParent: 1
+--- !u!1 &1000010304173438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011353213872}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000011422115520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010433737452}
+  - 65: {fileID: 65000010727784924}
+  - 54: {fileID: 54000014288473018}
+  - 114: {fileID: 114000010117184782}
+  m_Layer: 0
+  m_Name: Rifle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000014004354048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011055846912}
+  - 33: {fileID: 33000010050756858}
+  - 23: {fileID: 23000011909918444}
+  m_Layer: 0
+  m_Name: mauler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010433737452
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011422115520}
+  m_LocalRotation: {x: -0.093144916, y: -0.77693886, z: -0.61151046, w: 0.11723869}
+  m_LocalPosition: {x: 0.0056, y: 0.0307, z: 0.0057}
+  m_LocalScale: {x: 0.34745514, y: 0.34745514, z: 0.34745514}
+  m_LocalEulerAnglesHint: {x: -76.398, y: 196.594, z: 360.32}
+  m_Children:
+  - {fileID: 4000011055846912}
+  - {fileID: 4000011353213872}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &4000011055846912
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014004354048}
+  m_LocalRotation: {x: -0.7071068, y: 0.000000061817246, z: 0.000000061817246, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000010433737452}
+  m_RootOrder: 0
+--- !u!4 &4000011353213872
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010304173438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0168, z: 0.1514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000010433737452}
+  m_RootOrder: 1
+--- !u!23 &23000011909918444
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014004354048}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: b1ef718eff01b184985194afcab62985, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &33000010050756858
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014004354048}
+  m_Mesh: {fileID: 4300000, guid: a97da33f506743140bba5d7a279179ed, type: 3}
+--- !u!54 &54000014288473018
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011422115520}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65000010727784924
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011422115520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.047850635, y: 0.13373694, z: 0.28767556}
+  m_Center: {x: 0.0011572139, y: 0.0021779123, z: 0.0005329077}
+--- !u!114 &114000010117184782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011422115520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e22ccb01fd0c74fb90f1aa9a70a698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 1
+  userSettings:
+    leftHandIKTarget: {fileID: 0}
+    spineRotation: {x: 0, y: 0, z: 0}
+  weaponSettings:
+    bulletSpawn: {fileID: 4000011353213872}
+    damage: 5
+    bulletSpread: 5
+    fireRate: 0.2
+    bulletLayers:
+      serializedVersion: 2
+      m_Bits: 529
+    range: 200
+    muzzleFlash: {fileID: 0}
+    decal: {fileID: 0}
+    shell: {fileID: 0}
+    clip: {fileID: 0}
+    reloadDuration: 2
+    shellEjectSpawn: {fileID: 0}
+    shellEjectSpeed: 7.5
+    clipGO: {fileID: 0}
+    clipEjectPos: {fileID: 0}
+    equipPosition: {x: 0.0056, y: 0.0307, z: 0.0057}
+    equipRotation: {x: 283.5776, y: 196.90271, z: 0.32959044}
+    unequipPosition: {x: 0.02, y: -0.068, z: -0.003}
+    unequipRotation: {x: 318.61566, y: 120.35377, z: 342.12744}
+    useAnimations: 0
+    fireAnimationLayer: 0
+    fireAnimationName: Fire
+  ammo:
+    carryingAmmo: 300
+    clipAmmo: 50
+    maxClipAmmo: 50

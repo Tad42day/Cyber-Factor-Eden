@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoCuberPunk.CSharp", "ProjetoCuberPunk.CSharp.csproj", "{B5BCDAF4-1EAA-5C7E-1582-8089587D4E4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoCuberPunk.CSharp.Editor", "ProjetoCuberPunk.CSharp.Editor.csproj", "{2E3746A9-E5C0-7B31-4483-E20F02DD4449}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5BCDAF4-1EAA-5C7E-1582-8089587D4E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BCDAF4-1EAA-5C7E-1582-8089587D4E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BCDAF4-1EAA-5C7E-1582-8089587D4E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BCDAF4-1EAA-5C7E-1582-8089587D4E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E3746A9-E5C0-7B31-4483-E20F02DD4449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E3746A9-E5C0-7B31-4483-E20F02DD4449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E3746A9-E5C0-7B31-4483-E20F02DD4449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E3746A9-E5C0-7B31-4483-E20F02DD4449}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
