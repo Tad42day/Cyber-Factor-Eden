@@ -8,6 +8,9 @@ public class Weapon : MonoBehaviour {
     Collider coll;
     Rigidbody rigidBody;
     Animator animator;
+    AudioSource source;
+
+    public AudioClip[] audioClips;
 
     public enum WeaponType
     {
@@ -87,6 +90,7 @@ public class Weapon : MonoBehaviour {
         coll = GetComponent<Collider>();
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -186,6 +190,11 @@ public class Weapon : MonoBehaviour {
                 Destroy(shell, Random.Range(45.0f, 30.0f));
             }
         }
+        #endregion
+
+        #region sound
+        source.clip = audioClips[0];
+        source.Play();
         #endregion
 
         if (weaponSettings.useAnimations)
