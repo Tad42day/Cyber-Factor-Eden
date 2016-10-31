@@ -84,7 +84,13 @@ Material:
         name: _DstBlend
       second: 10
     - first:
+        name: _GlossMapScale
+      second: 1
+    - first:
         name: _Glossiness
+      second: 1
+    - first:
+        name: _GlossyReflections
       second: 1
     - first:
         name: _Metallic
@@ -102,6 +108,12 @@ Material:
         name: _Shininess
       second: 0.078125
     - first:
+        name: _SmoothnessTextureChannel
+      second: 0
+    - first:
+        name: _SpecularHighlights
+      second: 1
+    - first:
         name: _SrcBlend
       second: 1
     - first:
@@ -113,10 +125,10 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.616, g: 0.8897059, b: 0.8897059, a: 0.8}
+      second: {r: 0.616, g: 0.8897059, b: 0.8897059, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0.34385812, g: 0.43312255, b: 0.44117647, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _SpecColor
       second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

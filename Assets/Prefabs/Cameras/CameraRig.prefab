@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000011644037952}
   m_IsPrefabParent: 1
+--- !u!1 &1000010542070364
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013597987518}
+  - 20: {fileID: 20000012138839950}
+  m_Layer: 0
+  m_Name: UICamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011546132704
 GameObject:
   m_ObjectHideFlags: 1
@@ -23,6 +39,7 @@ GameObject:
   - 124: {fileID: 124000011708524254}
   - 92: {fileID: 92000011035324020}
   - 81: {fileID: 81000010160589342}
+  - 114: {fileID: 114000013567059364}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -68,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011644037952}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.425758, y: 0.35, z: -15.21}
+  m_LocalPosition: {x: 19.04, y: -5.3, z: -15.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -89,6 +106,19 @@ Transform:
   - {fileID: 4000013645877724}
   m_Father: {fileID: 4000010256719388}
   m_RootOrder: 0
+--- !u!4 &4000013597987518
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010542070364}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013645877724}
+  m_RootOrder: 0
 --- !u!4 &4000013645877724
 Transform:
   m_ObjectHideFlags: 1
@@ -99,9 +129,44 @@ Transform:
   m_LocalPosition: {x: 0.88, y: 0.59, z: -2.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 5.552, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000013597987518}
   m_Father: {fileID: 4000013056635316}
   m_RootOrder: 0
+--- !u!20 &20000012138839950
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010542070364}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 32
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!20 &20000012708944488
 Camera:
   m_ObjectHideFlags: 1
@@ -126,7 +191,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967263
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -170,6 +235,7 @@ MonoBehaviour:
   cameraSettings:
     camPositionOffsetLeft: {x: -0.53, y: 0.59, z: -2.27}
     camPositionOffsetRight: {x: 0.53, y: 0.59, z: -2.27}
+    uiCamera: {fileID: 20000012138839950}
     mouseXSensitivity: 5
     mouseYSensitivity: 5
     minAngle: -30
@@ -187,6 +253,36 @@ MonoBehaviour:
     switchShoulderButton: Fire4
   movement:
     movementLerpSpeed: 5
+--- !u!114 &114000013567059364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011546132704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390397f02bff7644ab045efd81d0d720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QualityLevel: 1
+  QualitySteps: 1
+  MotionScale: 3
+  CameraMotionMult: 1
+  MinVelocity: 1
+  MaxVelocity: 10
+  DepthThreshold: 0.01
+  Noise: 0
+  OverlayCameras: []
+  CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  AutoRegisterObjs: 1
+  MinResetDeltaDist: 1000
+  ResetFrameDelay: 1
+  WorkerThreads: 0
+  SystemThreadPool: 0
+  ForceCPUOnly: 0
+  DebugMode: 0
 --- !u!124 &124000011708524254
 Behaviour:
   m_ObjectHideFlags: 1

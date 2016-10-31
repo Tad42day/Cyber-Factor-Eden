@@ -18,6 +18,7 @@
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,6 +60,12 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="AmplifyMotion">
       <HintPath>Assets\Imports\AmplifyMotion\Plugins\AmplifyMotion.dll</HintPath>
@@ -115,9 +122,16 @@
     <Compile Include="Assets\Imports\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
     <Compile Include="Assets\Imports\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
     <Compile Include="Assets\Imports\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
+    <Compile Include="Assets\Imports\UnionAssetes\Particle\ParticleScaler\ParticleScale.cs" />
     <Compile Include="Assets\Scripts\CameraRig\CameraRig.cs" />
+    <Compile Include="Assets\Scripts\GameManagment\AudioController.cs" />
     <Compile Include="Assets\Scripts\GameManagment\GameController.cs" />
+    <Compile Include="Assets\Scripts\GameManagment\ScreenController.cs" />
+    <Compile Include="Assets\Scripts\GameManagment\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Player\AI.cs" />
+    <Compile Include="Assets\Scripts\Player\FootStepSounds.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\Player\UserInput.cs" />
     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponHandler.cs" />
@@ -137,6 +151,7 @@
     <None Include="Assets\Imports\AmplifyMotion\Resources\Shared.cginc" />
     <None Include="Assets\Imports\AmplifyMotion\Resources\SkinnedVectors.shader" />
     <None Include="Assets\Imports\AmplifyMotion\Resources\SolidVectors.shader" />
+    <None Include="Assets\Imports\Cerca\Fence\Readme.txt" />
     <None Include="Assets\Imports\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
     <None Include="Assets\Imports\ProCore\ProBuilder\About\Credits.txt" />
     <None Include="Assets\Imports\ProCore\ProBuilder\About\changelog.txt" />
@@ -151,6 +166,13 @@
     <None Include="Assets\Imports\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
     <None Include="Assets\Imports\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\Imports\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\Imports\Skyboxes\ely_darkcity 1\ely_darkcity.shader" />
+    <None Include="Assets\Imports\Skyboxes\jf_nuke\jf_nuke.shader" />
+    <None Include="Assets\Imports\Skyboxes\jf_nuke\readme.txt" />
+    <None Include="Assets\Imports\Skyboxes\lmcity\lmcity.shader" />
+    <None Include="Assets\Imports\Skyboxes\lmcity\readme.txt" />
+    <None Include="Assets\Imports\Skyboxes\mp_us\license.txt" />
+    <None Include="Assets\Imports\Skyboxes\mp_us\mp_us.shader" />
     <None Include="Assets\Imports\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Imports\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Imports\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

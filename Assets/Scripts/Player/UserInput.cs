@@ -4,8 +4,8 @@ using System;
 
 public class UserInput : MonoBehaviour {
 
-    public PlayerMovement playerMovement { get; set; }
-    public WeaponHandler weaponHandler { get; set; }
+    public PlayerMovement playerMovement { get; protected set; }
+    public WeaponHandler weaponHandler { get; protected set; }
 
     [System.Serializable]
     public class InputSettings
@@ -50,7 +50,7 @@ public class UserInput : MonoBehaviour {
 	void Update ()
     {
         CharacterLogic();
-        CameraLookoLogic();
+        CameraLookLogic();
         WeaponLogic();
 	}
 
@@ -93,46 +93,49 @@ public class UserInput : MonoBehaviour {
             return;
         }
 
-        aiming = Input.GetButton(input.aimButton) || debugAim;
-
         if (weaponHandler.currentWeapon)
         {
-            weaponHandler.Aim(aiming);
+            Ray aimRay = new Ray(TPSCamera.transform.position, TPSCamera.transform.forward);
 
-            other.requireInputForTurn = !aiming;
+            weaponHandler.currentWeapon.aimRay = aimRay;
 
-            weaponHandler.FingerOnTrigger(Input.GetButton(input.fireButton));
+            aiming = Input.GetButton(input.aimButton) || debugAim;
 
-            if (Input.GetButtonDown(input.reloadButton))
+            if (weaponHandler.currentWeapon)
             {
-                weaponHandler.Reload();
-            }
+                weaponHandler.Aim(aiming);
 
-            if (Input.GetButtonDown(input.dropWeaponButton))
-            {
-                weaponHandler.DropCurrentWeapon();
-            }
+                if (Input.GetButton(input.fireButton))
+                {
+                    weaponHandler.FireCurrentWeapon(aimRay);
+                }
 
-            if (Input.GetButtonDown(input.switchWeaponButton))
-            {
-                weaponHandler.SwitchWeapon();
-            }
+                if (Input.GetButtonDown(input.reloadButton))
+                {
+                    weaponHandler.Reload();
+                }
 
-            if (!weaponHandler.currentWeapon)
-            {
-                return;
-            }
+                if (Input.GetButtonDown(input.dropWeaponButton))
+                {
+                    weaponHandler.DropCurrentWeapon();
+                }
 
-            weaponHandler.currentWeapon.shootRay = new Ray(TPSCamera.transform.position, TPSCamera.transform.forward);
+                if (Input.GetButtonDown(input.switchWeaponButton))
+                {
+                    weaponHandler.SwitchWeapon();
+                }
+            }
         }
     }
 
-    void CameraLookoLogic()
+    void CameraLookLogic()
     {
         if (!TPSCamera)
         {
             return;
         }
+
+        other.requireInputForTurn = !aiming;
 
         if (other.requireInputForTurn)
         {

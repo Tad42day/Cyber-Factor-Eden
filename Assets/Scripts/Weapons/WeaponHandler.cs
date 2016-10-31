@@ -6,6 +6,7 @@ using System;
 public class WeaponHandler : MonoBehaviour {
 
     Animator animator;
+    AudioController ac;
 
     [System.Serializable]
     public class UserSettings
@@ -39,6 +40,13 @@ public class WeaponHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        GameObject checkSoundTag = GameObject.FindGameObjectWithTag("AudioController");
+
+        if (checkSoundTag != null)
+        {
+            ac = checkSoundTag.GetComponent<AudioController>();
+        }
+
         animator = GetComponent<Animator>();
 	}
 	
@@ -50,8 +58,9 @@ public class WeaponHandler : MonoBehaviour {
             currentWeapon.SetEquipped(true);
             currentWeapon.SetOwner(this);
             AddWeaponToList(currentWeapon);
+            currentWeapon.ownerAiming = aim;
 
-            if(currentWeapon.ammo.clipAmmo <= 0)
+            if (currentWeapon.ammo.clipAmmo <= 0)
             {
                 Reload();
             }
@@ -63,16 +72,16 @@ public class WeaponHandler : MonoBehaviour {
                     reload = false;
                 }
             }
+        }
 
-            if(weaponList.Count > 0)
+        if(weaponList.Count > 0)
+        {
+            for (int i = 0; i < weaponList.Count; i++)
             {
-                for (int i = 0; i < weaponList.Count; i++)
+                if(weaponList[i] != currentWeapon)
                 {
-                    if(weaponList[i] != currentWeapon)
-                    {
-                        weaponList[i].SetEquipped(false);
-                        weaponList[i].SetOwner(this);
-                    }
+                    weaponList[i].SetEquipped(false);
+                    weaponList[i].SetOwner(this);
                 }
             }
         }
@@ -118,14 +127,17 @@ public class WeaponHandler : MonoBehaviour {
         weaponList.Add(weapon);
     }
 
-    public void FingerOnTrigger(bool pulling)
+    public void FireCurrentWeapon(Ray aimRay)
     {
-        if (!currentWeapon)
+        if(currentWeapon.ammo.clipAmmo == 0)
         {
+            Reload();
             return;
         }
 
-        currentWeapon.PullTrigger(pulling && aim && !reload);
+        //currentWeapon.PullTrigger(pulling && aim && !reload && !settingWeapon);
+        if(aim && !reload && !settingWeapon)
+            currentWeapon.Fire(aimRay);
     }
 
     public void Reload()
@@ -138,6 +150,22 @@ public class WeaponHandler : MonoBehaviour {
         if(currentWeapon.ammo.carryingAmmo <= 0 || currentWeapon.ammo.clipAmmo == currentWeapon.ammo.maxClipAmmo)
         {
             return;
+        }
+
+        if(ac != null)
+        {
+            if(currentWeapon.sounds.reloadSound != null)
+            {
+                if(currentWeapon.sounds.audioS != null)
+                {
+                    ac.PlaySound(
+                        currentWeapon.sounds.audioS,
+                        currentWeapon.sounds.reloadSound,
+                        true,
+                        currentWeapon.sounds.pitchMin,
+                        currentWeapon.sounds.pitchMax);
+                }
+            }
         }
 
         reload = true;

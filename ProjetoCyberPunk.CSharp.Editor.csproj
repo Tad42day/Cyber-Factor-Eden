@@ -18,6 +18,7 @@
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.4.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
+    <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -84,11 +85,23 @@
     <Reference Include="UnityEditor.Android.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WebGL.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
     <Reference Include="AmplifyMotion">
       <HintPath>Assets\Imports\AmplifyMotion\Plugins\AmplifyMotion.dll</HintPath>
@@ -164,6 +177,7 @@
     <Compile Include="Assets\Imports\SceneViewFX\Editor\Icons.cs" />
     <Compile Include="Assets\Imports\SceneViewFX\Editor\SceneViewFX.cs" />
     <Compile Include="Assets\Imports\SceneViewFX\Editor\SceneViewFXReflections.cs" />
+    <Compile Include="Assets\Imports\UnionAssetes\Particle\ParticleScaler\Editor\ParticleScaleEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imports\AmplifyMotion\Readme.txt" />
@@ -180,6 +194,7 @@
     <None Include="Assets\Imports\AmplifyMotion\Resources\Shared.cginc" />
     <None Include="Assets\Imports\AmplifyMotion\Resources\SkinnedVectors.shader" />
     <None Include="Assets\Imports\AmplifyMotion\Resources\SolidVectors.shader" />
+    <None Include="Assets\Imports\Cerca\Fence\Readme.txt" />
     <None Include="Assets\Imports\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
     <None Include="Assets\Imports\ProCore\ProBuilder\About\Credits.txt" />
     <None Include="Assets\Imports\ProCore\ProBuilder\About\changelog.txt" />
@@ -194,6 +209,13 @@
     <None Include="Assets\Imports\ProCore\ProBuilder\Shader\pb_UnlitVertexColor.shader" />
     <None Include="Assets\Imports\ProCore\ProBuilder\Shader\pb_VertexShader.shader" />
     <None Include="Assets\Imports\ProCore\ProBuilder\readme.txt" />
+    <None Include="Assets\Imports\Skyboxes\ely_darkcity 1\ely_darkcity.shader" />
+    <None Include="Assets\Imports\Skyboxes\jf_nuke\jf_nuke.shader" />
+    <None Include="Assets\Imports\Skyboxes\jf_nuke\readme.txt" />
+    <None Include="Assets\Imports\Skyboxes\lmcity\lmcity.shader" />
+    <None Include="Assets\Imports\Skyboxes\lmcity\readme.txt" />
+    <None Include="Assets\Imports\Skyboxes\mp_us\license.txt" />
+    <None Include="Assets\Imports\Skyboxes\mp_us\mp_us.shader" />
     <None Include="Assets\Imports\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Imports\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Imports\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

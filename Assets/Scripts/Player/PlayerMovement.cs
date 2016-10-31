@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour {
         public float gravityModifier = 9.81f;
         public float baseGravity = 50.0f;
         public float resetValueGravity = 1.2f;
+        public LayerMask groundLayers;
+        public float airSpeed = 2.5f;
     }
     [SerializeField]
     public PhysicsSettings physics;
@@ -40,10 +42,25 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]
     public MovementSettings movement;
 
+    Vector3 airControl;
+    float forward;
+    float strafe;
     private bool jumping;
     private bool resetGravity;
     private float gravity;
-    private bool isGrounded = true;
+    private bool isGrounded(){
+        RaycastHit hit;
+        Vector3 start = transform.position + transform.up;
+        Vector3 dir = Vector3.down;
+        float radius = characterController.radius;
+
+        if(Physics.SphereCast(start, radius, dir, out hit, characterController.height / 2, physics.groundLayers))
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     void Awake()
     {
@@ -54,9 +71,23 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update()
     {
+        AirControl(forward, strafe);
         ApplyGravity();
         //Mover();
-        isGrounded = characterController.isGrounded;
+        //isGrounded = characterController.isGrounded;
+    }
+
+    void AirControl(float forward, float strafe)
+    {
+        if(isGrounded() == false)
+        {
+            airControl.x = strafe;
+            airControl.z = forward;
+            airControl = transform.TransformDirection(airControl);
+            airControl *= physics.airSpeed;
+
+            characterController.Move(airControl * Time.deltaTime);
+        }            
     }
 
     void Mover()
@@ -71,7 +102,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void ApplyGravity()
     {
-        if (!characterController.isGrounded)
+        if (!isGrounded())
         {
             if (!resetGravity)
             {
@@ -126,9 +157,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public void Animate(float forward, float strafe)
     {
+        this.forward = forward;
+        this.strafe = strafe;
         animator.SetFloat(animations.verticalVelocityFloat, forward);
         animator.SetFloat(animations.horizontalVelocityFloat, strafe);
-        animator.SetBool(animations.groundedBool, isGrounded);
+        animator.SetBool(animations.groundedBool, isGrounded());
         animator.SetBool(animations.jumpBool, jumping);
     }
 
@@ -139,7 +172,7 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
 
-        if (isGrounded)
+        if (isGrounded())
         {
             jumping = true;
             StartCoroutine(StopJump());

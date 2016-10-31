@@ -9,8 +9,7 @@ public class Weapon : MonoBehaviour {
     Rigidbody rigidBody;
     Animator animator;
     AudioSource source;
-
-    public AudioClip[] audioClips;
+    public AudioController ac;
 
     public enum WeaponType
     {
@@ -47,6 +46,7 @@ public class Weapon : MonoBehaviour {
         public GameObject clip;
 
         [Header("-Other settings-")]
+        public GameObject crosshairPrefab;
         public float reloadDuration = 2.0f;
         public Transform shellEjectSpawn;
         public float shellEjectSpeed = 7.5f;
@@ -77,20 +77,47 @@ public class Weapon : MonoBehaviour {
     [SerializeField]
     public Ammunition ammo;
 
-    public Ray shootRay { protected get; set; }
+    [System.Serializable]
+    public class SoundSettings
+    {
+        public AudioClip[] gunshotSounds;
+        public AudioClip reloadSound;
+        [Range(0, 3)] public float pitchMin = 1f;
+        [Range(0, 3)] public float pitchMax = 1.2f;
+        public AudioSource audioS;
+    }
+    [SerializeField]
+    public SoundSettings sounds;
+
+    // Crosshair
+    public Ray aimRay { protected get; set; }
+    public bool ownerAiming { get; set; }
 
     private WeaponHandler owner;
     private bool equipped;
-    private bool pullingTrigger;
+    //private bool pullingTrigger;
     private bool resettingCartridge;
 
 	// Use this for initialization
 	void Start ()
     {
+        GameObject checkSoundTag = GameObject.FindGameObjectWithTag("AudioController");
+
+        if(checkSoundTag != null)
+        {
+            ac = checkSoundTag.GetComponent<AudioController>();
+        }
+
         coll = GetComponent<Collider>();
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         source = GetComponent<AudioSource>();
+
+        if(weaponSettings.crosshairPrefab != null)
+        {
+            weaponSettings.crosshairPrefab = Instantiate(weaponSettings.crosshairPrefab);
+            ToggleCrosshair(false);
+        }
 	}
 	
 	// Update is called once per frame
@@ -106,15 +133,25 @@ public class Weapon : MonoBehaviour {
                 {
                     Equip();
 
-                    if (pullingTrigger)
+                    //if (pullingTrigger)
+                    //{
+                    //    Fire(shootRay);
+                    //}
+
+                    if (ownerAiming)
                     {
-                        Fire(shootRay);
+                        PositionCrosshair(aimRay);
+                    }
+                    else
+                    {
+                        ToggleCrosshair(false);
                     }
                 }
             }
             else
             {
                 Unequip(weaponType);
+                ToggleCrosshair(false);
             }
         }
         else
@@ -122,6 +159,8 @@ public class Weapon : MonoBehaviour {
             DisableEnableComponents(true);
 
             transform.SetParent(null);
+
+            ownerAiming = false;
         }
 	}
 
@@ -155,15 +194,65 @@ public class Weapon : MonoBehaviour {
                     rigidB.AddForce(weaponSettings.shellEjectSpawn.forward * weaponSettings.shellEjectSpeed, ForceMode.Impulse);
                 }
 
-                Destroy(shell, Random.Range(45.0f, 30.0f));
+                Destroy(shell, Random.Range(15.0f, 20.0f));
             }
         }
         #endregion
 
-        #region sound
-        source.clip = audioClips[0];
-        source.Play();
-        #endregion
+        PlayGunshotSound();
+
+    }
+
+    void PlayGunshotSound()
+    {
+        if (ac == null)
+        {
+            return;
+        }
+
+        if (sounds.audioS != null)
+        {
+            if (sounds.gunshotSounds.Length > 0)
+            {
+                ac.InstantiateClip(
+                    weaponSettings.bulletSpawn.position, // O local onde será reproduzido o som
+                    sounds.gunshotSounds[Random.Range(0, sounds.gunshotSounds.Length)], // Qual AudioClip irá ser usado
+                    2, // Tempo até destroir o audio
+                    true, // Se queremos randomizar o pitch
+                    sounds.pitchMin, // Valor minimo do pitch
+                    sounds.pitchMax); // Valor maximo do pitch
+            }
+        }
+    }
+
+    void PositionCrosshair(Ray ray)
+    {
+        RaycastHit hit;
+        Transform bSpawn = weaponSettings.bulletSpawn;
+        Vector3 bSpawnPoint = bSpawn.position;
+        Vector3 dir = ray.GetPoint(weaponSettings.range) - bSpawnPoint;
+
+        if (Physics.Raycast(bSpawnPoint, dir, out hit, weaponSettings.range, weaponSettings.bulletLayers))
+        {
+            if(weaponSettings.crosshairPrefab != null)
+            {
+                ToggleCrosshair(true);
+                weaponSettings.crosshairPrefab.transform.position = hit.point;
+                weaponSettings.crosshairPrefab.transform.LookAt(Camera.main.transform);
+            }
+            else
+            {
+                ToggleCrosshair(false);
+            }
+        }
+    }
+
+    void ToggleCrosshair(bool enabled)
+    {
+        if(weaponSettings.crosshairPrefab != null)
+        {
+            weaponSettings.crosshairPrefab.SetActive(enabled);
+        }
     }
 
     void HitEffects(RaycastHit hit)
@@ -191,9 +280,9 @@ public class Weapon : MonoBehaviour {
         }
     }
 
-    void Fire(Ray ray)
+    public void Fire(Ray ray)
     {
-        if(ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn)
+        if(ammo.clipAmmo <= 0 || resettingCartridge || !weaponSettings.bulletSpawn || !equipped)
         {
             return;
         }
@@ -201,7 +290,7 @@ public class Weapon : MonoBehaviour {
         RaycastHit hit;
         Transform bSpawn = weaponSettings.bulletSpawn;
         Vector3 bSpawnPoint = bSpawn.position;
-        Vector3 dir = ray.GetPoint(weaponSettings.range);
+        Vector3 dir = ray.GetPoint(weaponSettings.range) - bSpawnPoint;
 
         dir += (Vector3)Random.insideUnitCircle * weaponSettings.bulletSpread;
 
@@ -310,10 +399,10 @@ public class Weapon : MonoBehaviour {
         equipped = equip;
     }
 
-    public void PullTrigger(bool isPulling)
-    {
-        pullingTrigger = isPulling;
-    }
+    //public void PullTrigger(bool isPulling)
+    //{
+    //    pullingTrigger = isPulling;
+    //}
 
     public void SetOwner(WeaponHandler wp)
     {

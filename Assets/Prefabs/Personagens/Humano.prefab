@@ -592,6 +592,8 @@ GameObject:
   - 114: {fileID: 114000013047794194}
   - 114: {fileID: 114000013322744306}
   - 114: {fileID: 114000013937116168}
+  - 114: {fileID: 114000012294534530}
+  - 82: {fileID: 82000013609088584}
   m_Layer: 8
   m_Name: Humano
   m_TagString: Player
@@ -1411,7 +1413,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013095528184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.04, y: -5.3, z: -15.01}
+  m_LocalPosition: {x: 1.79, y: -5.4, z: -2.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1799,6 +1801,80 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82000013609088584
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013095528184}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1834,7 +1910,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1959,8 +2035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e22ccb01fd0c74fb90f1aa9a70a698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips:
-  - {fileID: 8300000, guid: f6cb1f581b7444b23a05b613a16420d5, type: 3}
+  ac: {fileID: 0}
   weaponType: 0
   userSettings:
     leftHandIKTarget: {fileID: 0}
@@ -1973,12 +2048,14 @@ MonoBehaviour:
     bulletLayers:
       serializedVersion: 2
       m_Bits: 529
-    range: 200
+    range: 800
     muzzleFlash: {fileID: 1000011864231782, guid: c2bfe4948d57e78459d7c53b03d42299,
       type: 2}
     decal: {fileID: 1000010612985878, guid: a8dd1db7243d8854992110369d720e16, type: 2}
     shell: {fileID: 1000012298481856, guid: 05dfd30303abf1c4397837f7b6ed59af, type: 2}
     clip: {fileID: 0}
+    crosshairPrefab: {fileID: 1000010800773676, guid: df91efb748c7cf74b81b6834f35d8a10,
+      type: 2}
     reloadDuration: 2
     shellEjectSpawn: {fileID: 4000010868795054}
     shellEjectSpeed: 3
@@ -1995,6 +2072,32 @@ MonoBehaviour:
     carryingAmmo: 150
     clipAmmo: 15
     maxClipAmmo: 15
+  sounds:
+    gunshotSounds:
+    - {fileID: 8300000, guid: f6cb1f581b7444b23a05b613a16420d5, type: 3}
+    reloadSound: {fileID: 8300000, guid: 4c1fdfafbfaae0149923ad5260375146, type: 3}
+    pitchMin: 1
+    pitchMax: 1.2
+    audioS: {fileID: 82000012457500242}
+--- !u!114 &114000012294534530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013095528184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ad33c4ebba71847bd5a5233d1c99bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textureTypes:
+  - name: Metal
+    textures:
+    - {fileID: 2800000, guid: 2740a09a1f8d8654391d60b8134b99b0, type: 3}
+    - {fileID: 2800000, guid: abcfd81161319bc4b9bc4040903531a4, type: 3}
+    footstepsSounds:
+    - {fileID: 8300000, guid: e4bf47f5ae6dbba49b8998f0ed803759, type: 3}
+  audioS: {fileID: 82000013609088584}
 --- !u!114 &114000013047794194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2015,6 +2118,10 @@ MonoBehaviour:
     gravityModifier: 9.81
     baseGravity: 50
     resetValueGravity: 1.2
+    groundLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    airSpeed: 2.5
   movement:
     moveSpeed: 5
     jumpSpeed: 6
@@ -2084,8 +2191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e22ccb01fd0c74fb90f1aa9a70a698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips:
-  - {fileID: 8300000, guid: f6cb1f581b7444b23a05b613a16420d5, type: 3}
+  ac: {fileID: 0}
   weaponType: 1
   userSettings:
     leftHandIKTarget: {fileID: 4000012483623108}
@@ -2098,12 +2204,14 @@ MonoBehaviour:
     bulletLayers:
       serializedVersion: 2
       m_Bits: 529
-    range: 200
+    range: 800
     muzzleFlash: {fileID: 1000011864231782, guid: c2bfe4948d57e78459d7c53b03d42299,
       type: 2}
     decal: {fileID: 1000010612985878, guid: a8dd1db7243d8854992110369d720e16, type: 2}
     shell: {fileID: 1000012298481856, guid: 05dfd30303abf1c4397837f7b6ed59af, type: 2}
     clip: {fileID: 0}
+    crosshairPrefab: {fileID: 1000010800773676, guid: df91efb748c7cf74b81b6834f35d8a10,
+      type: 2}
     reloadDuration: 2
     shellEjectSpawn: {fileID: 4000013667939442}
     shellEjectSpeed: 3
@@ -2117,9 +2225,16 @@ MonoBehaviour:
     fireAnimationLayer: 0
     fireAnimationName: Fire
   ammo:
-    carryingAmmo: 300
+    carryingAmmo: 350
     clipAmmo: 50
     maxClipAmmo: 50
+  sounds:
+    gunshotSounds:
+    - {fileID: 8300000, guid: f6cb1f581b7444b23a05b613a16420d5, type: 3}
+    reloadSound: {fileID: 8300000, guid: af3ca28c1ba4a0546bfe6767f60181c5, type: 3}
+    pitchMin: 1
+    pitchMax: 1.2
+    audioS: {fileID: 82000010570748528}
 --- !u!137 &137000012375898996
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
